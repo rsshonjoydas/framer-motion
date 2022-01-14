@@ -1,6 +1,14 @@
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { stateLogger } from "../../stateLogger";
 
-const BackDrop = ({children, onClick}) => (
+const BackDrop = ({children, onClick}) => {
+  useEffect(() => {
+    stateLogger("Backdrop", true);
+    return () => stateLogger("Backdrop", false);
+  }, []);
+
+  return(
     <motion.div
       className='backdrop'
       onClick={onClick}
@@ -10,6 +18,6 @@ const BackDrop = ({children, onClick}) => (
     >
       {children}
     </motion.div>
-  )
+  )}
 
 export default BackDrop
