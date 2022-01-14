@@ -1,9 +1,34 @@
-const Home = () => (
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import Modal from "../components/Modal";
+
+const Home = () => {
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const close = () => setModalOpen(false)
+  const open = () => setModalOpen(true)
+
+  return(
   <div>
-    <h1 className="h-screen flex items-center justify-center bg-gray-100 text-lg font-semibold text-purple-500 font-cursive">
-      RS Shonjoy
-    </h1>
+    <motion.button 
+      whileHover={{scale: 1.1}} 
+      whileTap={{scale: 0.9}} 
+      type="button" 
+      className="save-button" 
+      onClick={() => (modalOpen ? close() : open())}
+    >
+      Launch Motion
+    </motion.button>
+
+    <AnimatePresence
+      initial={false}
+      exitBeforeEnter
+      onExitComplete={() =>null}
+    >
+    {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />}
+
+    </AnimatePresence>
   </div>
-);
+)};
 
 export default Home;
