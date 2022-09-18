@@ -7,6 +7,9 @@
   <h3 align="center">Next Boilerplate
   <div align="center"><h3>Project Link: <a href="https://github.com/rsshonjoydas/next-boilerplate">GitHub</a> or <a href="https://codesandbox.io/s/github/rsshonjoydas/next-boilerplate/tree/main">CodeSandbox</a></h3></div>
 
+  <div align="center"><h6>This Project Link: <a href="https://github.com/rsshonjoydas/framer-motion">GitHub</a> or <a href="https://codesandbox.io/s/github/rsshonjoydas/framer-motion/tree/main">CodeSandbox</a></h6></div>
+  <div align="center"><h6>This Project live Link: <a href="https://framer-motion-rust.vercel.app/">Vercel</a> or <a href="https://fvvlh6.sse.codesandbox.io/">CodeSandbox</a></h6></div>
+
 <!-- TABLE OF CONTENTS -->
 
 ## Table of Contents
