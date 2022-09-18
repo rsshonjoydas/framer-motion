@@ -1,13 +1,60 @@
-import type { NextPage } from 'next';
+import { AnimatePresence, motion } from 'framer-motion';
+import { NextPage } from 'next';
+import { useState } from 'react';
+import Notification from '../components/Notification';
+import { framerLogger } from '../stateLogger';
+import { add } from '../utils/notification';
 
-const Home: NextPage = () => (
-  <>
-    <h2>RS Shonjoy - Roboto</h2>
-    <h1 className='font-cursive'>RS Shonjoy - Cursive</h1>
-    <h2 className='font-poppins'>RS Shonjoy - Poppins</h2>
-    <h2 className='font-montserrat'>RS Shonjoy - Montserrat</h2>
-    <p className='text-primary-600'>RS Shonjoy</p>
-  </>
+interface Provider {
+  text: string;
+  style: string;
+}
+
+const NotificationContainer = ({ children, position }: any) => (
+  <ul className={`notificationUl ${position}`}>
+    <AnimatePresence initial={false} onExitComplete={() => framerLogger('Notifications container')}>
+      {children}
+    </AnimatePresence>
+  </ul>
 );
+
+const Home: NextPage = () => {
+  // Notifications state
+  const [notifications, setNotifications] = useState<Provider[]>([]);
+
+  // Notification text
+  const [text] = useState('Awesome job! 🚀');
+
+  // Notification style
+  const [style] = useState('error');
+
+  return (
+    <>
+      <motion.main>
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className='add-button'
+          onClick={() => setNotifications(add(notifications, text, style))}
+          // onClick={() => setNotifications(add(notifications, 'RS Shonjoy', 'error'))}
+        >
+          + Stack em up
+        </motion.button>
+      </motion.main>
+
+      <NotificationContainer position='top'>
+        {notifications &&
+          notifications.map((notification) => (
+            <Notification
+              key={notification}
+              notification={notification}
+              notifications={notifications}
+              setNotifications={setNotifications}
+            />
+          ))}
+      </NotificationContainer>
+    </>
+  );
+};
 
 export default Home;
