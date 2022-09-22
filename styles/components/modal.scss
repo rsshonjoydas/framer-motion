@@ -4,23 +4,28 @@
   left: 0;
   height: 100vh;
   width: 100%;
-  background: #000000e1;
+  // background: #000000e1;
+  background: #000000c0;
   display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 10;
+
+  .modal {
+    align-items: center;
+    justify-content: center;
+  }
+  .drawer {
+    align-items: left;
+    justify-content: left;
+  }
 }
 
-.modal {
-  width: clamp(50%, 700px, 90%);
-  height: min(50%, 300px);
-  cursor: move;
-  margin: auto;
+.drawer {
+  height: 100vh;
+  width: 16rem;
   padding: 0 2rem;
-  border-radius: 12px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
 }
 
 .orange-gradient {
